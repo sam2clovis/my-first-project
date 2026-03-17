@@ -1,2 +1,3 @@
 this is my first project using three tools such as Git, Github, and Jenkins.
 I am practicing Git changes
+I am practicing Git Pull from github to git
