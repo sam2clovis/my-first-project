@@ -1,24 +1,39 @@
+cat > Jenkinsfile <<'EOF'
 pipeline {
     agent any
 
     stages {
-        stage('Checkout Info') {
+        stage('Start') {
             steps {
-                echo 'Jenkins is running the pipeline.'
-                bat 'git --version'
+                echo 'Website pipeline started'
             }
         }
 
-        stage('Read Project File') {
+        stage('List Files') {
             steps {
-                bat 'type notes.txt'
+                bat 'dir'
             }
         }
 
-        stage('Success') {
+        stage('Check Website Files') {
             steps {
-                echo 'Build completed successfully.'
+                bat 'if not exist index.html exit 1'
+                bat 'if not exist style.css exit 1'
+                echo 'Website files found successfully'
+            }
+        }
+
+        stage('Show HTML') {
+            steps {
+                bat 'type index.html'
+            }
+        }
+
+        stage('Finish') {
+            steps {
+                echo 'Website pipeline completed successfully'
             }
         }
     }
 }
+EOF
