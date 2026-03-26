@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Maze Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Number Maze Game</h1>
+    <p>Click the numbers in the correct order from 1 to 5.</p>
+
+    <div class="maze">
+      <button class="cell" onclick="checkNumber(3)">3</button>
+      <button class="cell" onclick="checkNumber(1)">1</button>
+      <button class="cell" onclick="checkNumber(5)">5</button>
+      <button class="cell" onclick="checkNumber(2)">2</button>
+      <button class="cell" onclick="checkNumber(4)">4</button>
+    </div>
+
+    <p id="message">Start with number 1.</p>
+    <button onclick="goHome()">Back to Home</button>
+  </div>
+
+  <script>
+    let currentNumber = 1;
+
+    function checkNumber(num) {
+      const message = document.getElementById("message");
+
+      if (num === currentNumber) {
+        if (currentNumber === 5) {
+          message.innerText = "Great job! You finished the number maze!";
+          currentNumber = 1;
+        } else {
+          currentNumber++;
+          message.innerText = "Good! Now find number " + currentNumber + ".";
+        }
+      } else {
+        message.innerText = "Oops, try again! Find number " + currentNumber + ".";
+      }
+    }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
